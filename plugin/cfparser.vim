@@ -37,7 +37,14 @@ if !exists('g:cf_locale')
 endif
 
 if !exists('g:cf_test_command')
-    let g:cf_test_command = "g++ %s; cnt=0; for i in `ls %s/*.in | sed 's/.in//'`; do let cnt++; echo \"\nTEST $cnt\"; ./a.out < $i.in | diff -y - $i.out; rm a.out; done;"
+    let g:cf_test_command = "g++ %s;
+                            \cnt=0;
+                            \for i in `ls %s/*.in | sed 's/.in//'`; do
+                            \   let cnt++;
+                            \   echo \"\nTEST $cnt\";
+                            \   ./a.out < $i.in | diff -y - $i.out;
+                            \done;
+                            \rm a.out;"
 endif
 
 "}}}
@@ -46,7 +53,7 @@ command! -nargs=0 CFLogin call cfparser#CFLogin()
 command! -nargs=0 CFLogout call cfparser#CFLogout()
 command! -nargs=0 CFWhoAmI call cfparser#CFWhoAmI()
 command! -nargs=0 CFProblemStatement call cfparser#CFProblemStatement()
-command! -nargs=0 CFDownloadTests call cfparser#CFParseTests()
+command! -nargs=0 CFDownloadTests call cfparser#CFDownloadTests()
 command! -nargs=0 CFTestAll call cfparser#CFTestAll()
 command! -nargs=0 CFSubmit call cfparser#CFSubmit()
 command! -nargs=? CFLastSubmissions call cfparser#CFLastSubmissions(<args>)
