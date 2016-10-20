@@ -33,9 +33,9 @@ function! cfparser#CFParseTests(data) "{{{
     let from = 0
     while !empty(matchstr(a:data, input_regex, from))
         let input = matchlist(a:data, input_regex, from)[1]
-        let from = matchstrpos(a:data, input_regex, from)[2] 
+        let from = matchend(a:data, input_regex, from)
         let output = matchlist(a:data, output_regex, from)[1]
-        let from = matchstrpos(a:data, output_regex, from)[2] 
+        let from = matchend(a:data, output_regex, from)
         let input = substitute(input,'<br[^>]\{-}>', '\n', "g")
         let output = substitute(output,'<br[^>]\{-}>', '\n', "g")
         call add(ret, [input, output])
