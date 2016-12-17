@@ -25,6 +25,7 @@ let g:cf_test_command = "g++ %s;
                         \done;
                         \rm a.out;"
 ```
+This will compile the file with `g++` and test it against `0.in` and `0.out`, `1.in` and `1.out`, etc...
 - `g:cf_locale` - Language to download problem statement. Either `"ru"` or `"en"` (default: `"en"`)
 
 ## Usage
