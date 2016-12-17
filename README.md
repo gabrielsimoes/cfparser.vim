@@ -1,5 +1,5 @@
 # cfparser.vim
-A port from emacs plugin [gnull/cfparser](https://github.com/gnull/cfparser).
+A [codeforces](http://codeforces.com) plugin for vim, ported from emacs plugin [gnull/cfparser](https://github.com/gnull/cfparser).
 
 ## Installation
 - Install `curl`
