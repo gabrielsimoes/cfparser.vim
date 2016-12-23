@@ -176,7 +176,14 @@ function! cfparser#CFLastSubmissions(...) "{{{
 endfunction
 "}}}
 function! cfparser#CFTestAll() "{{{
-    echo system(printf(g:cf_test_command, expand('%:p'), expand('%:p:h')))
+    echo system(printf("g++ %s;
+                            \cnt=0;
+                            \for i in `ls %s/*.in | sed 's/.in//'`; do
+                            \   let cnt++;
+                            \   echo \"\nTEST $cnt\";
+                            \   ./a.out < $i.in | diff -y - $i.out;
+                            \done;
+                            \rm a.out;", expand('%:p'), expand('%:p:h')))
 endfunction
 
 "}}}

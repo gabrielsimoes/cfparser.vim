@@ -36,17 +36,6 @@ if !exists('g:cf_locale')
     let g:cf_locale = "en"
 endif
 
-if !exists('g:cf_test_command')
-    let g:cf_test_command = "g++ %s;
-                            \cnt=0;
-                            \for i in `ls %s/*.in | sed 's/.in//'`; do
-                            \   let cnt++;
-                            \   echo \"\nTEST $cnt\";
-                            \   ./a.out < $i.in | diff -y - $i.out;
-                            \done;
-                            \rm a.out;"
-endif
-
 "}}}
 " Command definitions "{{{
 command! -nargs=0 CFLogin call cfparser#CFLogin()

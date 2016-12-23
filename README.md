@@ -13,20 +13,23 @@ Plug 'gabrielsimoes/cfparser.vim'
 You can setup some variables at your .vimrc:
 - `g:cf_cookies_file` - File in which `curl` will store cookies (default: `'~/.cf_cookies'`)
 - `g:cf_default_language` - Language to be used when it it not recognized from file extension (default: g:cf_pl_gpp - g++). Languages are mapped in `plugin/cfparser.vim`
-- `g:cf_test_command` - Shell command to compile and run your solution on sample tests. It must be a string, in which string literals will be replaced by printf. First argument is file name, second argument is file and tests location.For example, the default is:
+- `g:cf_locale` - Language to download problem statement. Either `"ru"` or `"en"` (default: `"en"`)
+- You can also redefine the function `cfparser#CFTestAll()`, that is, the function that is called to test your solution against test files. The default definition is as follows. You can redefine the function by writing your own version of it at your `.vimrc`, *after* loading `cfparser.vim`.
 
 ```
-let g:cf_test_command = "g++ %s;
-                        \cnt=0;
-                        \for i in `ls %s/*.in | sed 's/.in//'`; do
-                        \   let cnt++;
-                        \   echo \"\nTEST $cnt\";
-                        \   ./a.out < $i.in | diff -y - $i.out;
-                        \done;
-                        \rm a.out;"
+function! cfparser#CFTestAll()
+    echo system(printf("g++ %s;
+                       \cnt=0;
+                       \for i in `ls %s/*.in | sed 's/.in//'`; do
+                       \   let cnt++;
+                       \   echo \"\nTEST $cnt\";
+                       \   ./a.out < $i.in | diff -y - $i.out;
+                       \done;
+                       \rm a.out;", expand('%:p'), expand('%:p:h')))
+endfunction
 ```
+
 This will compile the file with `g++` and test it against `0.in` and `0.out`, `1.in` and `1.out`, etc...
-- `g:cf_locale` - Language to download problem statement. Either `"ru"` or `"en"` (default: `"en"`)
 
 ## Usage
 - `<leader>cfi` - Log**i**n (calls `CFLogin()`)
@@ -42,3 +45,4 @@ Submit, download sample tests and problem statement functions "guess" the contes
 - `directory/505/A/myfile.cpp`
 - `directory/505/a.c`
 - `directory/505a.cc`
+
