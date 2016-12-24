@@ -44,6 +44,7 @@ command! -nargs=0 CFWhoAmI call cfparser#CFWhoAmI()
 command! -nargs=0 CFProblemStatement call cfparser#CFProblemStatement()
 command! -nargs=0 CFDownloadTests call cfparser#CFDownloadTests()
 command! -nargs=0 CFTestAll call cfparser#CFTestAll()
+command! -nargs=0 CFRun call cfparser#CFRun()
 command! -nargs=0 CFSubmit call cfparser#CFSubmit()
 command! -nargs=? CFLastSubmissions call cfparser#CFLastSubmissions(<args>)
 
@@ -55,6 +56,7 @@ nmap <leader>cfw :CFWhoAmI<CR>
 nmap <leader>cfp :CFProblemStatement<CR>
 nmap <leader>cfd :CFDownloadTests<CR>
 nmap <leader>cft :CFTestAll<CR>
+nmap <leader>cfr :CFRun<CR>
 nmap <leader>cfs :CFSubmit<CR>
 nmap <leader>cfl :CFLastSubmissions<CR>
 "}}}

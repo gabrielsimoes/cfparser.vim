@@ -187,6 +187,13 @@ function! cfparser#CFTestAll() "{{{
 endfunction
 
 "}}}
+function! cfparser#CFRun() "{{{
+    echo system(printf("g++ %s", expand('%s:p')))
+    RunInInteractiveShell ./a.out
+    call system("rm a.out")
+endfunction
+
+"}}}
 function! cfparser#CFProblemStatement() "{{{
     let path = expand('%:p')
     let match = matchlist(path, s:cf_path_regexp)

@@ -31,6 +31,18 @@ endfunction
 
 This will compile the file with `g++` and test it against `0.in` and `0.out`, `1.in` and `1.out`, etc...
 
+- You also redefine the function `cfparser#CFRun()`, the function that is called to test your solution in an interactive shell. You can redefine it by writing your own version of it at your `.vimrc`, after loading `cfparser.vim`. The default definition is below:
+
+```
+function! cfparser#CFRun()
+    echo system(printf("g++ %s", expand('%s:p')))
+    RunInInteractiveShell ./a.out
+    call system("rm a.out")
+endfunction
+```
+
+This will compile the file with `g++` and run it with the command `RunInteractiveShell`, which is provided by the following plugin: [christoomey/vim-run-interactive](https://github.com/christoomey/vim-run-interactive).
+
 ## Usage
 - `<leader>cfi` - Log**i**n (calls `CFLogin()`)
 - `<leader>cfo` - Log**o**ut (calls `CFLogout()`)
@@ -38,6 +50,7 @@ This will compile the file with `g++` and test it against `0.in` and `0.out`, `1
 - `<leader>cfp` - Display **p**roblem statement (calls `CFProblemStatement()`)
 - `<leader>cfd` - **D**ownload sample tests to current code folder (0.in, 0.out, 1.in ...) (calls `CFDownloadTests()`)
 - `<leader>cft` - Runs code with sample **t**ests (calls `CFTestAll()`)
+- `<leader>cfr` - *R*uns code in an interactive shell (calls `CFRun()`)
 - `<leader>cfs` - **S**ubmit current open file (calls `CFSubmit()`)
 - `<leader>cfl` - **L**ist most recent submissions (calls `CFLastSubmissions()` without arguments - can be called with username as argument, default to logged in user)
 
