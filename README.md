@@ -18,14 +18,15 @@ You can setup some variables at your .vimrc:
 
 ```
 function! cfparser#CFTestAll()
-    echo system(printf("g++ %s;
-                       \cnt=0;
-                       \for i in `ls %s/*.in | sed 's/.in//'`; do
-                       \   let cnt++;
-                       \   echo \"\nTEST $cnt\";
-                       \   ./a.out < $i.in | diff -y - $i.out;
-                       \done;
-                       \rm a.out;", expand('%:p'), expand('%:p:h')))
+    echo system(printf("g++ %s -o /tmp/cfparser_exec
+                        \cnt=0;
+                        \for i in `ls %s/*.in | sed 's/.in//'`; do
+                        \   let cnt++;
+                        \   echo \"\nTEST $cnt\";
+                        \   /tmp/cfparser_exec < $i.in | diff -y - $i.out;
+                        \done;
+                        \rm /tmp/cfparser_exec",
+        \ expand('%:p'), expand('%:p:h')))
 endfunction
 ```
 
@@ -35,9 +36,9 @@ This will compile the file with `g++` and test it against `0.in` and `0.out`, `1
 
 ```
 function! cfparser#CFRun()
-    echo system(printf("g++ %s", expand('%s:p')))
-    RunInInteractiveShell ./a.out
-    call system("rm a.out")
+    echo system(printf("g++ %s -o /tmp/cfparser_exec", expand('%s:p')))
+    RunInInteractiveShell /tmp/cfparser_exec
+    call system("rm /tmp/cfparser_exec")
 endfunction
 ```
 
