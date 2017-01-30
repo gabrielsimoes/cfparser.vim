@@ -6,10 +6,10 @@ let g:cf_pl_gpp11 = "42"
 let g:cf_pl_gpp14 = "50"
 let g:cf_pl_msvc10 = "2"
 let g:cf_pl_monocharp = "9"
-let g:cf_pl_mscharp = "29"
+let g:cf_pl_mscharpdotnet = "29"
 let g:cf_pl_d = "28"
 let g:cf_pl_go = "32"
-let g:cf_pl_haskel = "12"
+let g:cf_pl_haskell = "12"
 let g:cf_pl_java_8 = "36"
 let g:cf_pl_kotlin = "48"
 let g:cf_pl_ocaml = "19"
@@ -22,17 +22,29 @@ let g:cf_pl_python_3 = "31"
 let g:cf_pl_pypy_2 = "40"
 let g:cf_pl_pypy_3 = "41"
 let g:cf_pl_ruby = "8"
+let g:cf_pl_rust = "49"
 let g:cf_pl_scala = "20"
 let g:cf_pl_js = "34"
 
-let g:cf_pl_by_ext =    {'.cpp': g:cf_pl_gpp,
-                        \'.cc': g:cf_pl_gpp,
-                        \'.c': g:cf_pl_gcc,
-                        \'.pas': g:cf_pl_fpc,
-                        \'.php': g:cf_pl_php,
+let g:cf_pl_by_ext =    {'.cpp': g:cf_pl_gpp11,
+                        \'.cc': g:cf_pl_gpp11,
+                        \'.c': g:cf_pl_gcc11,
+                        \'.cs': g:cf_pl_monocharp,
+                        \'.d': g:cf_pl_d,
+                        \'.go': g:cf_pl_go,
+                        \'.hs': g:cf_pl_haskell,
                         \'.java': g:cf_pl_java_8,
-						\'.cs': g:cf_pl_monocharp,
-                        \'.py': g:cf_pl_python_3}
+                        \'.kt': g:cf_pl_kotlin,
+                        \'.ml': g:cf_pl_ocaml,
+                        \'.dpr': cf_pl_delphi,
+                        \'.pas': g:cf_pl_fpc,
+                        \'.pl': g:cf_pl_perl,
+                        \'.php': g:cf_pl_php,
+                        \'.py': g:cf_pl_python_3,
+                        \'.rb': g:cf_pl_ruby,
+                        \'.rs': g:cf_pl_rust,
+                        \'.scala': g:cf_pl_scala,
+                        \'.js': g:cf_pl_js}
 
 if !exists('g:cf_cookies_file')
     let g:cf_cookies_file = expand('~/.cf_cookies')
