@@ -18,7 +18,7 @@ You can setup some variables at your .vimrc:
 
 ```
 function! cfparser#CFTestAll()
-    echo system(printf("g++ %s -o /tmp/cfparser_exec
+    echo system(printf("g++ %s -o /tmp/cfparser_exec;
                         \cnt=0;
                         \for i in `ls %s/*.in | sed 's/.in//'`; do
                         \   let cnt++;
