@@ -163,12 +163,12 @@ function! cfparser#CFLastSubmissions(...) "{{{
     endif
 
     let cf_response = system(printf("curl --location --silent '%s://%s/api/user.status?handle=%s&from=1&count=5'", s:cf_proto, s:cf_host, handle))
-    let cf_response = parsejson#ParseJSON(cf_response)
+    let cf_response_json = parsejson#ParseJSON(cf_response)
 
-    if empty(matchstr(cf_response.status, "OK"))
+    if empty(matchstr(cf_response_json.status, "OK"))
         echom "last submissions: failed"
     else
-        let result = cf_response.result
+        let result = cf_response_json.result
         for sub in result
             echom printf("%d%s - %s - %s - Last Test: %d - %.3fMB - %dms", sub.problem.contestId, sub.problem.index, sub.problem.name, sub.verdict, sub.passedTestCount, sub.memoryConsumedBytes / 1000000.0, sub.timeConsumedMillis)
         endfor
