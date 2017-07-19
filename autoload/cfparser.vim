@@ -191,7 +191,13 @@ endfunction
 "}}}
 function! cfparser#CFRun() "{{{
     echo system(printf("g++ %s -o /tmp/cfparser_exec", expand('%s:p')))
-    RunInInteractiveShell /tmp/cfparser_exec
+    let saved_shellcmdflag = &shellcmdflag
+        set shellcmdflag+=il
+    try
+        execute '!'. '/tmp/cfparser_exec'
+    finally
+        execute 'set shellcmdflag=' . saved_shellcmdflag
+    endtry
     call system("rm /tmp/cfparser_exec")
 endfunction
 
