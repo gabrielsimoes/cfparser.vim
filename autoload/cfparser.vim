@@ -93,7 +93,7 @@ function! cfparser#CFLogin() "{{{
 
     let cf_response = system(printf("curl --silent --cookie-jar %s '%s://%s/enter'", g:cf_cookies_file, s:cf_proto, s:cf_host))
     let csrf_token = cfparser#CFGetToken(cf_response)
-    let cf_response = system(printf("curl --location --silent --cookie-jar %s --cookie %s --data 'action=enter&handle=%s&password=%s&remember=%s&csrf_token=%s' '%s://%s/enter'", g:cf_cookies_file, g:cf_cookies_file, s:cf_uname, s:cf_passwd, s:cf_remember, csrf_token, s:cf_proto, s:cf_host))
+    let cf_response = system(printf("curl --location --silent --cookie-jar %s --cookie %s --data 'action=enter&handle=%s&remember=%s&csrf_token=%s' --data-urlencode 'password=%s' '%s://%s/enter'", g:cf_cookies_file, g:cf_cookies_file, s:cf_uname, s:cf_remember, csrf_token, s:cf_passwd, s:cf_proto, s:cf_host))
     echon "\r\r"
     if empty(matchstr(cf_response, '"error for__password"'))
         echom "login: ok"
