@@ -4,6 +4,7 @@ let g:cf_pl_gcc11 = "43"
 let g:cf_pl_gpp = "1"
 let g:cf_pl_gpp11 = "42" 
 let g:cf_pl_gpp14 = "50"
+let g:cf_pl_gpp17 = "54"
 let g:cf_pl_msvc10 = "2"
 let g:cf_pl_monocharp = "9"
 let g:cf_pl_mscharpdotnet = "29"
@@ -26,8 +27,8 @@ let g:cf_pl_rust = "49"
 let g:cf_pl_scala = "20"
 let g:cf_pl_js = "34"
 
-let g:cf_pl_by_ext =    {'.cpp': g:cf_pl_gpp11,
-                        \'.cc': g:cf_pl_gpp11,
+let g:cf_pl_by_ext =    {'.cpp': g:cf_pl_gpp17,
+                        \'.cc': g:cf_pl_gpp17,
                         \'.c': g:cf_pl_gcc11,
                         \'.cs': g:cf_pl_monocharp,
                         \'.d': g:cf_pl_d,
