@@ -54,7 +54,7 @@ if !exists('g:cf_cookies_file')
 endif
 
 if !exists('g:cf_default_language')
-    let g:cf_default_language = g:cf_pl_gpp
+    let g:cf_default_language = g:cf_pl_gpp17
 endif
 
 if !exists('g:cf_pl_by_ext_custom')

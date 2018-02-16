@@ -12,11 +12,11 @@ Plug 'gabrielsimoes/cfparser.vim'
 ### Optional setup
 You can setup some variables at your .vimrc:
 - `g:cf_cookies_file` - File in which `curl` will store cookies (default: `'~/.cf_cookies'`)
-- `g:cf_default_language` - Language to be used when it it not recognized from file extension (default: g:cf_pl_gpp - g++). Languages are mapped in `plugin/cfparser.vim`
+- `g:cf_default_language` - Language to be used when it it not recognized from file extension. Languages codes are available at `plugin/cfparser.vim`. The default is `"54"` which corresponds to `C++17`, as defined in the variable `g:cf_pl_gpp`.
 - `g:cf_pl_by_ext_custom` - A dictionary from file extension to language code to override the defaults. `cfparser.vim` will first check in the custom map, and if not found it will check the default map, and finally `g:cf_default_language`. If you prefer `C++11` over `C++17`, for example:
 
 ```vim
-let g:cf_pl_by_ext_custom = {'.cpp': g:cf_pl_gpp11}
+let g:cf_pl_by_ext_custom = {'.cpp': "42"}
 ```
 
 - `g:cf_locale` - Language to download problem statement. Either `"ru"` or `"en"` (default: `"en"`)
