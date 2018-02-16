@@ -57,6 +57,10 @@ if !exists('g:cf_default_language')
     let g:cf_default_language = g:cf_pl_gpp
 endif
 
+if !exists('g:cf_pl_by_ext_custom')
+    let g:cf_pl_by_ext_custom = {}
+endif
+
 if !exists('g:cf_locale')
     let g:cf_locale = "en"
 endif

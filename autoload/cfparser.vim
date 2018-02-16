@@ -128,15 +128,21 @@ function! cfparser#CFSubmit() "{{{
 
     let path = expand('%:p')
     let match = matchlist(path, s:cf_path_regexp)
-    
-    if empty(match)        
+
+    if empty(match)
         echon "\r\r"
         echom "submit: file name not recognized"
     else
         let contest = match[1]
         let problem = match[2]
         let extension = match[3]
-        let language = get(g:cf_pl_by_ext, extension, g:cf_default_language)
+
+        let language = g:cf_default_language
+        if has_key(g:cf_pl_by_ext_custom, extension)
+            let language = get(g:cf_pl_by_ext_custom, extension)
+        elseif has_key(g:cf_pl_by_ext, extension)
+            let language = get(g:cf_pl_by_ext, extension)
+        endif
 
         let cf_response = system(printf("curl --silent --cookie-jar %s --cookie %s '%s://%s/contest/%s/submit'", g:cf_cookies_file, g:cf_cookies_file, s:cf_proto, s:cf_host, contest))
         let csrf_token = cfparser#CFGetToken(cf_response)
@@ -205,8 +211,8 @@ endfunction
 function! cfparser#CFProblemStatement() "{{{
     let path = expand('%:p')
     let match = matchlist(path, s:cf_path_regexp)
-    
-    if empty(match)        
+
+    if empty(match)
         echom "download: file name not recognized"
     else
         let contest = match[1]
