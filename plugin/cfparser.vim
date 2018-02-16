@@ -1,13 +1,15 @@
 " Variable definitions "{{{
 let g:cf_pl_gcc = "10"
 let g:cf_pl_gcc11 = "43"
+let g:cf_pl_clang17_diagnostics = "52"
 let g:cf_pl_gpp = "1"
 let g:cf_pl_gpp11 = "42" 
 let g:cf_pl_gpp14 = "50"
 let g:cf_pl_gpp17 = "54"
+let g:cf_pl_gpp17_diagnostics = "53"
 let g:cf_pl_msvc10 = "2"
-let g:cf_pl_monocharp = "9"
-let g:cf_pl_mscharpdotnet = "29"
+let g:cf_pl_monocsharp = "9"
+let g:cf_pl_mscsharpdotnet = "29"
 let g:cf_pl_d = "28"
 let g:cf_pl_go = "32"
 let g:cf_pl_haskell = "12"
@@ -30,7 +32,7 @@ let g:cf_pl_js = "34"
 let g:cf_pl_by_ext =    {'.cpp': g:cf_pl_gpp17,
                         \'.cc': g:cf_pl_gpp17,
                         \'.c': g:cf_pl_gcc11,
-                        \'.cs': g:cf_pl_monocharp,
+                        \'.cs': g:cf_pl_monocsharp,
                         \'.d': g:cf_pl_d,
                         \'.go': g:cf_pl_go,
                         \'.hs': g:cf_pl_haskell,
