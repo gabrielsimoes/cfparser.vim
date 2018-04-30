@@ -1,7 +1,7 @@
 " Variables "{{{
 let s:cf_host = 'codeforces.com'
 let s:cf_proto = 'http'
-let s:cf_path_regexp = '\([0-9]\+\)\/\?\([a-zA-Z]\)\/\?[^/.]*\(\.[^.]\+\)$'
+let s:cf_path_regexp = '\([0-9]\+\)\/\?\([a-zA-Z][0-9]*\)\/\?[^/.]*\(\.[^.]\+\)$'
 
 "}}}
 
