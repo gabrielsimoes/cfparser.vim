@@ -85,7 +85,7 @@ function! cfparser#CFLogin() "{{{
     let s:cf_uname = input('username: ')
     let s:cf_passwd = inputsecret('password: ')
     let remember = input('remember? [Y/n] ')
-    if remember ==? "n"
+    if remember ==? "Y"
         let s:cf_remember = 1
     else
         let s:cf_remember = 0
