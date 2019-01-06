@@ -27,8 +27,8 @@ endfunction
 
 "}}}
 function! cfparser#CFParseTests(data) "{{{
-    let input_regex = '<div class=\"input\">.\{-}<pre>\(.\{-}\)</pre></div>'
-    let output_regex = '<div class=\"output\">.\{-}<pre>\(.\{-}\)</pre></div>'
+    let input_regex = '<div class=\"input\">.\{-}<pre>\n*\(.\{-}\)</pre></div>'
+    let output_regex = '<div class=\"output\">.\{-}<pre>\n*\(.\{-}\)</pre></div>'
     let ret = []
     let from = 0
     while !empty(matchstr(a:data, input_regex, from))
