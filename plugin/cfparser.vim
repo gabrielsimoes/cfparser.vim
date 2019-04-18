@@ -72,6 +72,7 @@ command! -nargs=0 CFLogout call cfparser#CFLogout()
 command! -nargs=0 CFWhoAmI call cfparser#CFWhoAmI()
 command! -nargs=0 CFProblemStatement call cfparser#CFProblemStatement()
 command! -nargs=0 CFDownloadTests call cfparser#CFDownloadTests()
+command! -nargs=0 CFClearTests call cfparser#CFClearTests()
 command! -nargs=0 CFTestAll call cfparser#CFTestAll()
 command! -nargs=0 CFRun call cfparser#CFRun()
 command! -nargs=0 CFSubmit call cfparser#CFSubmit()
@@ -84,6 +85,7 @@ nmap <leader>cfo :CFLogout<CR>
 nmap <leader>cfw :CFWhoAmI<CR>
 nmap <leader>cfp :CFProblemStatement<CR>
 nmap <leader>cfd :CFDownloadTests<CR>
+nmap <leader>cfc :CFClearTests<CR>
 nmap <leader>cft :CFTestAll<CR>
 nmap <leader>cfr :CFRun<CR>
 nmap <leader>cfs :CFSubmit<CR>

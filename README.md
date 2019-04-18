@@ -56,6 +56,7 @@ This will compile the file with `g++` and run it with the command `RunInteractiv
 - `<leader>cfw` - **W**ho am I (calls `CFWhoAmI()`)
 - `<leader>cfp` - Display **p**roblem statement (calls `CFProblemStatement()`)
 - `<leader>cfd` - **D**ownload sample tests to current code folder (0.in, 0.out, 1.in ...) (calls `CFDownloadTests()`)
+- `<leader>cfc` - **C**lear previously downloaded sample tests from current folder (0.in, 0.out, 1.in ...) (calls `CFClearTests()`)
 - `<leader>cft` - Runs code with sample **t**ests (calls `CFTestAll()`)
 - `<leader>cfr` - **R**uns code in an interactive shell (calls `CFRun()`)
 - `<leader>cfs` - **S**ubmit current open file (calls `CFSubmit()`)
