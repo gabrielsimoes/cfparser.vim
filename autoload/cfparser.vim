@@ -81,6 +81,12 @@ function! cfparser#CFDownloadTests() "{{{
 endfunction
 
 "}}}
+function! cfparser#CFClearTests() "{{{
+    echo system("rm *.in *.out")
+    echom "cleared tests"
+endfunction
+
+"}}}
 function! cfparser#CFLogin() "{{{
     let s:cf_uname = input('username: ')
     let s:cf_passwd = inputsecret('password: ')
