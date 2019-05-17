@@ -1,6 +1,6 @@
 " Variables "{{{
 let s:cf_host = 'codeforces.com'
-let s:cf_proto = 'http'
+let s:cf_proto = 'https'
 let s:cf_path_regexp = '\([0-9]\+\)\/\?\([a-zA-Z][0-9]*\)\/\?[^/.]*\(\.[^.]\+\)$'
 
 "}}}
@@ -31,13 +31,19 @@ function! cfparser#CFParseTests(data) "{{{
     let output_regex = '<div class=\"output\">.\{-}<pre>\n*\(.\{-}\)</pre></div>'
     let ret = []
     let from = 0
+    let text_substitutions = {
+        \'<br[^>]\{-}>': '\n',
+        \'&lt;': '<',
+        \'&gt;': '>',
+        \'&amp;': '&'
+        \}
     while !empty(matchstr(a:data, input_regex, from))
         let input = matchlist(a:data, input_regex, from)[1]
         let from = matchend(a:data, input_regex, from)
         let output = matchlist(a:data, output_regex, from)[1]
         let from = matchend(a:data, output_regex, from)
-        let input = substitute(input,'<br[^>]\{-}>', '\n', "g")
-        let output = substitute(output,'<br[^>]\{-}>', '\n', "g")
+        let input = cfparser#CFApplySubstitutions(input, text_substitutions)
+        let output = cfparser#CFApplySubstitutions(output, text_substitutions)
         call add(ret, [input, output])
     endwhile
     return ret
@@ -47,6 +53,15 @@ endfunction
 function! cfparser#CFGetTests(contest, problem) "{{{
     let cf_response = system(printf("curl --silent --cookie-jar %s --cookie %s '%s://%s/contest/%s/problem/%s'", g:cf_cookies_file, g:cf_cookies_file, s:cf_proto, s:cf_host, a:contest, a:problem))
 	return cfparser#CFParseTests(cf_response)
+endfunction
+
+"}}}
+function! cfparser#CFApplySubstitutions(text, text_substitutions) "{{{
+    let l:text = a:text
+    for [pat, sub] in items(a:text_substitutions)
+        let l:text = substitute(l:text, pat, sub, "g")
+    endfor
+    return l:text
 endfunction
 
 "}}}
